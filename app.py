@@ -51,6 +51,7 @@ def roommate(num):
         )[:remaining]
         in_cluster_matches.extend(global_matches)
 
+    in_cluster_matches = sorted(in_cluster_matches, key=lambda x: similarity[stu_index][x], reverse=True)
     return in_cluster_matches,new_df,similarity,stu_index
 
 def view(matches,df,similarity,stu_index):
@@ -99,9 +100,11 @@ st.title('Clustered & Compatible: Your AI Roommate Guide')
 df = pickle.load(open("df_dict.pkl",'rb'))
 df = pd.DataFrame(df)
 df = df[df['gender']=="Male"]
+scho_num = df['scho_num'].unique()
+opts = ['Select an Option'] + sorted(scho_num)
 option = st.selectbox(
     'Enter Your Scholar Number',
-    df['scho_num'].values
+    opts
 )
 
 if st.button('Recommend'):
