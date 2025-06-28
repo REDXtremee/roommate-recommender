@@ -111,6 +111,7 @@ if st.button('Recommend'):
     if(option == 'Select an Option'):
         st.warning("Please select a valid Scholar No.")
     else:
+        st.balloons()
         matches, df, similarity, stu_index = roommate(option)
         view(matches,df,similarity,stu_index)
         st.markdown(
