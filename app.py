@@ -108,15 +108,17 @@ option = st.selectbox(
 )
 
 if st.button('Recommend'):
-    #
-    matches, df, similarity, stu_index = roommate(option)
-    view(matches,df,similarity,stu_index)
-    st.markdown(
-        """
-        ---
-        🔍 **Disclaimer:**  
-        These recommendations are based solely on the input provided by individuals.  
-        They **do not reflect any official roommate or hostel allotment**.  
-        This tool is only meant to help students explore compatible roommate options with similar preferences and habits.
-        """
-    )
+    if(option == 'Select an Option'):
+        st.warning("Please select a valid Scholar No.")
+    else:
+        matches, df, similarity, stu_index = roommate(option)
+        view(matches,df,similarity,stu_index)
+        st.markdown(
+            """
+            ---
+            🔍 **Disclaimer:**  
+            These recommendations are based solely on the input provided by individuals.  
+            They **do not reflect any official roommate or hostel allotment**.  
+            This tool is only meant to help students explore compatible roommate options with similar preferences and habits.
+            """
+        )
