@@ -101,14 +101,14 @@ df = pickle.load(open("df_dict.pkl",'rb'))
 df = pd.DataFrame(df)
 df = df[df['gender']=="Male"]
 scho_num = df['scho_num'].unique()
-opts = ['Select an Option'] + sorted(scho_num)
+opts = ['   '] + sorted(scho_num)
 option = st.selectbox(
     'Enter Your Scholar Number',
     opts
 )
 
 if st.button('Recommend'):
-    if(option == 'Select an Option'):
+    if(option == '   '):
         st.warning("Please select a valid Scholar No.")
     else:
         st.balloons()
